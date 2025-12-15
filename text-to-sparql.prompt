@@ -1,0 +1,122 @@
+PROMPT TITLE: Ontology-Driven Text-to-SPARQL (Wikidata)
+
+ROLE
+You translate natural-language questions into syntactically valid SPARQL queries for Wikidata, grounded in an explicit ontology (properties/relations) and entity mappings.
+
+INPUTS
+# Natural language question: {question}
+
+# QID mapping (Wikidata entity of interest)
+- `{entity_name}`: {qid}
+
+# PID mapping (Wikidata properties or relations)
+- `has cause`: P828
+- `disease transmission process`: P1060
+- `cause of death`: P509
+- `health specialty`: P1995
+- `medical examination`: P923
+- `symptoms and signs`: P780
+- `commemorates`: P547
+- `field of work`: P101
+- `instance of`: P31
+- `depicts`: P180
+{property_mappings}
+
+OUTPUT CONSTRAINTS
+- Output ONLY a valid SPARQL query (no prose, no explanations).
+- Always include the label service:
+  SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" }}
+- Prefer concise SELECT variables (?causeLabel, ?symptomLabel, etc.).
+- The output SPARQL query must be inspired from the query EXAMPLES below, both for the structure, ontological terms, and form.
+
+PROCEDURE (high level)
+- The translation typically relies on entities (QID) and ontological relations or properties (PID) in the questions.
+- Select an appropriate query pattern: the triple patterns of subject, predicate, and object; directions; and variables.
+- Compose a minimal SPARQL query with label service; avoid extraneous clauses unless required.
+- Ensure syntactic validity.
+
+EXAMPLES (with ontological terms to reinforce grounding), assume that QIDX is the QID of the entity X.
+# Natural language: What is the cause of X?
+   Ontological terms involved: has cause (P828)
+   SPARQL:
+   SELECT ?causeLabel WHERE {{
+     wd:QIDX wdt:P828 ?cause .
+     SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" }}
+   }}
+
+# Natural language: How is X transmitted?
+   Ontological terms involved: disease transmission process (P1060)
+   SPARQL:
+   SELECT ?transmissionLabel WHERE {{
+     wd:QIDX wdt:P1060 ?transmission .
+     SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" }}
+   }}
+
+# Natural language: What is the cause of death of X?
+   Ontological terms involved: cause of death (P509)
+   SPARQL:
+   SELECT ?causeLabel WHERE {{
+     wd:QIDX wdt:P509 ?cause .
+     SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" }}
+   }}
+
+# Natural language: What medical specialties are involved in treating X?
+   Ontological terms involved: health specialty (P1995)
+   SPARQL:
+   SELECT ?specialtyLabel WHERE {{
+     wd:QIDX wdt:P1995 ?specialty .
+     SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" }}
+   }}
+
+# Natural language: X is a medical exam for which disease?
+   Ontological terms involved: medical examination (P923)
+   SPARQL:
+   SELECT ?diseaseLabel WHERE {{
+     ?disease wdt:P923 wd:QIDX .
+     SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" }}
+   }}
+
+# Natural language: What are the symptoms of X?
+   Ontological terms involved: symptoms and signs (P780)
+   SPARQL:
+   SELECT ?symptomLabel WHERE {{
+     wd:QIDX wdt:P780 ?symptom .
+     SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" }}
+   }}
+
+# Natural language: What event commemorates X?
+   Ontological terms involved: commemorates (P547)
+   SPARQL:
+   SELECT ?eventLabel WHERE {{
+     ?event wdt:P547 wd:QIDX .
+     SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" }}
+   }}
+
+# Natural language: Who are some researchers working in the field of X?
+   Ontological terms involved: field of work (P101)
+   SPARQL:
+   SELECT ?researcherLabel WHERE {{
+     ?researcher wdt:P101 wd:QIDX .
+     SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" }}
+   }}
+
+# Natural language: X corresponds to what types?
+   Ontological terms involved: instance of (P31)
+   SPARQL:
+   SELECT ?typeLabel WHERE {{
+     wd:QIDX wdt:P31 ?type .
+     SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" }}
+   }}
+
+# Natural language: The painting of X depicts what disease?
+   Ontological terms involved: depicts (P180)
+   SPARQL:
+   SELECT ?depictionLabel WHERE {{
+     wd:QIDX wdt:P180 ?depiction .
+     SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en" }}
+   }}
+
+FINAL INSTRUCTION
+Now produce ONLY the SPARQL query for:
+Q: {question}
+A:
