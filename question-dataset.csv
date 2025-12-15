@@ -1,0 +1,93 @@
+Natural Language,SPARQL,Ontological Terms Involved,NL Groundings for TB,SPARQL Grounding for TB,Results (2025.09.14)
+What is the cause of X?,"SELECT ?causeLabel
+WHERE {
+  X wdt:P828 ?cause .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}
+",has cause (P828),"What causes tuberculosis?, What is the underlying cause of tuberculosis?, Which factor is responsible for tuberculosis?","SELECT ?causeLabel
+WHERE {
+  wd:Q12204 wdt:P828 ?cause .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}
+",Mycobacterium tuberculosis
+How is X transmitted?,"SELECT ?transmissionLabel
+WHERE {
+  X wdt:P1060 ?transmission .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}",disease transmission process (P1060),"In what ways is tuberculosis spread?, By what routes is tuberculosis transmitted?, How does tuberculosis pass from one host to another?","SELECT ?transmissionLabel
+WHERE {
+  wd:Q12204 wdt:P1060 ?transmission .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}",airborne transmission
+What is the cause of death of X?,"SELECT ?causeLabel
+WHERE {
+  X wdt:P509 ?cause .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}",cause of death (P509),"What did General Soedirman die of?, What was the cause of General Soedirman’s death?, Which condition led to General Soedirman’s death?","SELECT ?causeLabel
+WHERE {
+  wd:Q2367329 wdt:P509 ?cause .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}",tuberculosis
+What medical specialties are involved in treating X?,"SELECT ?specialtyLabel
+WHERE {
+  X wdt:P1995 ?specialty .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}",health specialty (P1995),"Which clinical specialties manage tuberculosis?, What medical disciplines typically treat tuberculosis?, Which specialties are responsible for tuberculosis’s care?","SELECT ?specialtyLabel
+WHERE {
+  wd:Q12204 wdt:P1995 ?specialty .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}","pulmonology, infectious diseases, phthisiology"
+X is a medical exam for which disease?,"SELECT ?diseaseLabel
+WHERE {
+  ?disease wdt:P923 X .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}",medical examination (P923),"The Mantoux test is used to diagnose which disease?, The Mantoux test is performed to detect what condition?, The Mantoux test serves as an examination for which illness?","SELECT ?diseaseLabel
+WHERE {
+  ?disease wdt:P923 wd:Q908699 .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}",tuberculosis
+What are the symptoms of X?,"SELECT ?symptomLabel
+WHERE {
+  X wdt:P780 ?symptom .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}",symptoms and signs (P780),"Which symptoms are associated with tuberculosis?, What signs and symptoms indicate tuberculosis?, How does tuberculosis commonly present?","SELECT ?symptomLabel
+WHERE {
+  wd:Q12204 wdt:P780 ?symptom .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}","cough, fever, night sweats, hemoptysis, chest pain, weight loss, chills, fatigue"
+What event commemorates X?,"SELECT ?eventLabel
+WHERE {
+  ?event wdt:P547 X .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}",commemorates (P547),"Which event is held in commemoration of tuberculosis?, What occasion honors tuberculosis?, Which observance commemorates tuberculosis?","SELECT ?eventLabel
+WHERE {
+  ?event wdt:P547 wd:Q12204 .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}",World Tuberculosis Day
+Who are some researchers working in the field of X?,"SELECT ?researcherLabel
+WHERE {
+  ?researcher wdt:P101 X .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}",field of work (P101),"Which scholars are active in research on tuberculosis?, Who are notable researchers focusing on tuberculosis?, Which scientists work in the area of tuberculosis?","SELECT ?researcherLabel
+WHERE {
+  ?researcher wdt:P101 wd:Q12204 .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}","Felix Victor Birch-Hirschfeld, Beelitz-Heilstätten, Joachim Hein, Heinrich Martius, Karel Styblo, Karl Diehl, Stefan Kaufmann, Q2875324, Pierre Chaulet, Glen Lake Sanatorium, Preventorium of Agramonte, Jehangir Hormusjee Ruttonjee, Center for Global Infectious Disease Research, Puigdolena, Robert William Philip, Soumya Swaminathan, Q21489912, Dispensario antituberculoso Victoria Eugenia, Patronato Nacional Antituberculoso, Q28004438, Stephen Lawn, Hospital Guadarrama, Linda-Gail Bekker, Francisco Cerdán, Ibrahim Abubakar, Giovanni Battista Migliori, Zinaida Lebedeva, Matthew McNeil, Sébastien Gagneux, Elsa Anes, Arvid Wallgren, Rosella Centis, Manish Soneja, Louis Guinard, Helen R. Stagg, tuberculosis societies, Won-Jung Koh, Anne Fanning, Ernst Löwenstein, Q65131282, Jan Gijsbertus Driessen, Bernhard Fust, Maria Kalapothakes, Ted Cohen, Rosa Lee Nemir, Peter C Ray, Christina Taulien Fiske, Suman S Majumdar, Milan Pavlas, Petr Vaník, Henry Longstreet Taylor, Antonín Veselý, Elisabeth sanatorium, Vladimir Einis, José de Palacios y Olmedo, Sanatorium Charlottenhöhe, Wiwa Jaroszewicz, Jeanne Albertine Noske-Fabius, Peter Edward Baldry, William Hugh Feldman, Otto Wiese, Adriaan van Voorthuijsen, Jacques Grosset, Q112419145, Helmut Liebau, István Földes, Howard A. Buechner, Young-Soo Shim, Samantha Colquhoun, Natalie Waller, Mariusz Migała, Zdeňka Janouškovcová, Matúš Dohál, Margaret H.D. Smith, Q127145903, Ndiawa Health Centre, Ndielu Primary Health Care, Royal Cross Methodist Hospital, Umuhu Ezechi Primary Health Care Centre, Leila C. Kahwati, Esther Stichting, Dénes Mosolygó, Corpus Christi Hospital Amuzi, ""Crown Medical Centre, Nnarambia"", Nnarambia Health Centre"
+X corresponds to what types?,"SELECT ?typeLabel
+WHERE {
+  X wdt:P31 ?type .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}",instance of (P31),"Tuberculosis is an instance of which types?, Tuberculosis falls under what categories?, Tuberculosis belongs to which classes?","SELECT ?typeLabel
+WHERE {
+  wd:Q12204 wdt:P31 ?type .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}","disease, notifiable disease, class of disease"
+The painting of X depicts what disease?,"SELECT ?depictionLabel
+WHERE {
+  wd:X wdt:P180 ?depiction .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}",depicts (P180),"Which disease is portrayed in the painting of The Sick Child?, What illness is shown in the painting of The Sick Child?, The artwork depicting The Sick Child represents which disease?","SELECT ?depictionLabel
+WHERE {
+  wd:Q2267579 wdt:P180 ?depiction .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language ""en"" }
+}","girl, tuberculosis"
